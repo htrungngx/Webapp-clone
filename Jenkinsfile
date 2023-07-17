@@ -8,7 +8,7 @@
         }
         stage('Docker ') {
             steps {
-                withDockerRegistry(credentialsId: '6ff6a5fb-aeb1-4e2d-b8d9-94a54da88648', url: 'https://index.docker.io/v1/') {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubPassword')]) {
                     sh 'docker build -t dckb9xz/webpipeline:v1 .'
                     sh 'docker push -t dckb9xz/webpipeline:v1'
                 }
