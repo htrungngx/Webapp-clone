@@ -8,10 +8,8 @@
         }
         stage('Docker ') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-pipeline', url: 'https://index.docker.io/v1/') {
+                
                     sh 'docker build -t dckb9xz/webpipeline:v1 .'
-                    sh 'docker push -t dckb9xz/webpipeline:v1'
-                }
             }
             
         }
