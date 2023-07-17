@@ -8,7 +8,9 @@
         }
         stage('Docker ') {
             steps {
+                withDockerRegistry(credentialsId: 'webapp-pipeline') {
                     sh 'docker build -t dckb9xz/webpipeline:v1 .'
+                    sh 'docker push -t dckb9xz/webpipeline:v1'
                 }
             
         }
