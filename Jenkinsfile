@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Deploy image') {
       steps {
-           withDockerRegistry([credentialsId: 'dockerHub', url: 'https://index.docker.io/v1/']) {
+           withDockerRegistry([credentialsId: 'dockerHub', url: 'https://index.docker.io/v1/'], toolName: 'Docker') {
             echo "Hello"
         }
       }
