@@ -13,10 +13,15 @@ pipeline {
     }
     stage('Deploy image') {
       steps {
-           withDockerRegistry([credentialsId: 'dockerHub', url: 'https://index.docker.io/v1/']) {
-            sh 'docker push -t dckb9xz/webpipeline:v1'
+        script {
+            withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerHubID')]) {
+                sh 'docker login -u dckb9xz -p ${dockerHubID}'
+                sh 'docker push -t -t dckb9xz/webpipeline:v1'
+            }
         }
       }
     }
   }
 }
+
+       
