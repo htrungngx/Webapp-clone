@@ -1,8 +1,4 @@
 pipeline {
-  environment {
-    registryCredential = 'dockerHub'
-    dockerImage = ''
-  }
   agent any
   stages {
     stage('Clone') {
@@ -17,10 +13,8 @@ pipeline {
     }
     stage('Deploy image') {
       steps {
-        script {
-          docker.withRegistry('', registryCredential) {
-            dockerImage.push()
-          }
+           withDockerRegistry([credentialsId: 'dockerHub', url: 'https://index.docker.io/v1/']) {
+            echo "Hello"
         }
       }
     }
