@@ -1,7 +1,7 @@
  pipeline {
     agent any
     stages {
-        stage('clone') {
+        stage('Clone') {
             steps {
                 git 'https://github.com/htrungngx/WebApp_pipeline.git'
             }
