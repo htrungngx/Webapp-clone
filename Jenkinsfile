@@ -8,8 +8,12 @@
         }
         stage('Docker build ') {
             steps {
+                script {
                     sh 'docker build -t dckb9xz/webpipeline:v1 .'
+
                 }
+                }
+            
             
         }
     }
