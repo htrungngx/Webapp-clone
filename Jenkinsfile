@@ -17,9 +17,9 @@
         }
         stage('Deploy image') {
             steps {
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                    }
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                }
             }
         }
     }
