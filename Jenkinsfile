@@ -6,16 +6,17 @@ pipeline {
         git branch: 'main', url: 'https://github.com/htrungngx/WebApp_pipeline.git'
       }
     }
-    stage('SonarQube analysis') {
-      steps {
-        withSonarQubeEnv('Sonar_Server') {
-          sh "./gradlew sonarqube"
-        }
+    stage('Sonarqube') {
+      environment {
+          scannerHome = tool 'Sonar_Server'
       }
-    }
-    stage("Quality gate") {
       steps {
-        waitForQualityGate abortPipeline: true
+          withSonarQubeEnv('sonarqube') {
+              sh "${scannerHome}/bin/sonar-scanner"
+          }
+          timeout(time: 10, unit: 'MINUTES') {
+              waitForQualityGate abortPipeline: true
+          }
       }
     }
     stage('Building image') {
