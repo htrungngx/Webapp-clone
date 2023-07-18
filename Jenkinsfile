@@ -12,10 +12,7 @@ pipeline {
       }
       steps {
           withSonarQubeEnv('Sonar_Server') {
-              sh "${scannerHome}/bin/sonar-scanner" \
-              -D sonar.projectKey=webapppipeline-test \
-              -D sonar.sources=. \
-
+              sh "${scannerHome}/bin/sonar-scanner"
           }
           timeout(time: 10, unit: 'MINUTES') {
               waitForQualityGate abortPipeline: true
