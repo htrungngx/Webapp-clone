@@ -8,4 +8,4 @@
 movie-trailer (promise, searching url from names) => const urlParams = new URLSearchParams(new URL(url).search);
 						     urlParams.get('v');
 
-=>>>>>>>>> Viết PP cho sensor + apply iternship again. Test
+=>>>>>>>>> Viết PP cho sensor + apply iternship again.
